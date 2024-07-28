@@ -1,8 +1,18 @@
+import React from "react";
+import styled from "styled-components";
+import logo from "../assets/images/"
+
+
 export const Header = () => {
-    return ( 
+    return (
         <header>
-            <h1>Header</h1>
+          <img src="logo" alt="" />  
+
+
+
+
+
         </header>
-     );
-}
+    );
+};
  
