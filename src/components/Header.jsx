@@ -6,7 +6,10 @@ import 'primeicons/primeicons.css';
 export const Header = () => {
   return (
     <HeaderContainer>
+      <div>
 
+        
+      </div>
         <Logo src={logo} alt="Logo Digital Store" />
 
         <SearchContainer>
@@ -35,10 +38,11 @@ export const Header = () => {
 
 
 const HeaderContainer = styled.header`
-  width: 100vw;
+  width: 100%;
   height: 192px;
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   border: 1px solid black;
 `;
 

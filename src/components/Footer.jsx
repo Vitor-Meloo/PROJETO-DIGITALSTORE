@@ -8,25 +8,37 @@ const FooterComponent = styled.footer`
 
     background-color: #1F1F1F;
     color: white;
-    padding: 30px 30px 0px 30px;
     list-style-type: none;
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 50px;
+    padding-bottom: 0;
+    margin: 0;
     
     
     & #container{
         display: flex;
-        gap: 50px;
-        justify-content: space-between;
-        border-bottom: 1px solid white;
+        flex-wrap: wrap;
+        gap: 30px;
+        border-bottom: 1px solid gray;
+
+        & h4{
+            font-weight: 600;
+        }
+
+        & p{
+            color: #e0e0e0;
+            font-size: 15px;
+        }
+
         & div{
-            width: auto;
+            width: 200px;
             height: auto;
             display: flex;
             flex-direction: column;
             gap: 25px;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
 
             & ul{
                 display: flex;
@@ -38,15 +50,23 @@ const FooterComponent = styled.footer`
         & #conexoes{
             display: flex;
             flex-direction: column;
-            gap: 25px;
+            gap: 35px;
             width: 600px;
             align-items: start;
             padding: 0 60px 0 0;
+
+            & #imglogo{
+                width: 200px;
+            }
 
             & nav > ul{
                 display: flex;
                 flex-direction: row;
                 gap:20px;
+            }
+
+            & nav > ul >li:hover{
+                cursor: pointer;
             }
 
             & .socialNetwork{
@@ -56,11 +76,11 @@ const FooterComponent = styled.footer`
         }
     }
 
-    & #imglogo{
-        width: 200px;
-    }
+    
 
     & #copyright{
+        font-size: 13px;
+        color: #e0e0e0;
         width: 100%;
         height: 60px;
         display: flex;
@@ -90,12 +110,12 @@ export const Footer = () => {
                     <h4>Informação</h4>
                     <nav>
                         <ul>
-                            <li>Sobre a Drip Store</li>
-                            <li>Segurança</li>
-                            <li>Wishlist</li>
-                            <li>Blog</li>
-                            <li>Trabalhe conosco</li>
-                            <li>Meus pedidos</li>
+                            <li><p>Sobre Drip Store</p></li>
+                            <li><p>Segurança</p></li>
+                            <li><p>Wishlist</p></li>
+                            <li><p>Blog</p></li>
+                            <li><p>Trabalhe conosco</p></li>
+                            <li><p>Meus pedidos</p></li>
                         </ul>
                     </nav>
                 </div>
@@ -104,11 +124,11 @@ export const Footer = () => {
                     <h4>Categorias</h4>
                     <nav>
                         <ul>
-                            <li>Camisetas</li>
-                            <li>Calças</li>
-                            <li>Bonés</li>
-                            <li>Headphones</li>
-                            <li>Tênis</li>
+                            <li><p>Camisetas</p></li>
+                            <li><p>Calças</p></li>
+                            <li><p>Bonés</p></li>
+                            <li><p>Headphones</p></li>
+                            <li><p>Tênis</p></li>
                         </ul>
                     </nav>
                 </div>
@@ -116,8 +136,8 @@ export const Footer = () => {
                 <div id="contato">
                     <h4>Contato</h4>
                     <ul>
-                        <li>Av.Santos Dumont, 1510 -1 andar - Aldeota,Fortaleza -CE,60150-161</li>
-                        <li>(85) 3051-3411</li>
+                        <li><p>Av.Santos Dumont, 1510 - 1 andar - Aldeota, Fortaleza -CE,60150-161</p></li>
+                        <li><p>(85) 3051-3411</p></li>
                     </ul>
                 </div>
 
