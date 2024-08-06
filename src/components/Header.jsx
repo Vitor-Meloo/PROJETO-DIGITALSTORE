@@ -3,9 +3,11 @@ import styled from "styled-components";
 import logo from "..//assets/images/logo.png";
 import 'primeicons/primeicons.css';
 import iconCart from "../assets/icons/mini-cart.png"
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 export const Header = () => {
+  
+  
   return (
     <HeaderContainer>
       <div>
@@ -23,10 +25,10 @@ export const Header = () => {
 
       <nav>
         <ul>
-          <li><Link to={"/"}>Home</Link></li>
-          <li><Link>Produtos</Link></li>
-          <li><Link>Categorias</Link></li>
-          <li><Link>Meus Produtos</Link></li>
+          <li><NavLink to={"/"} className="nav-link" activeClassName="active">Home</NavLink></li>
+          <li><NavLink to={"/products"} className="nav-link" activeClassName="active">Produtos</NavLink></li>
+          <li><NavLink to={"/categories"} className="nav-link" activeClassName="active">Categorias</NavLink></li>
+          <li><NavLink to={"/my-products"} className="nav-link" activeClassName="active">Meus Produtos</NavLink></li>
         </ul>
       </nav>
       
@@ -47,84 +49,87 @@ const HeaderContainer = styled.header`
   padding: 0 10%;
 
   & div{
-
-    width: 100%;
-    display: flex;
-    align-items: center;
-    gap: 30px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 30px;
 
     & img#logo{
-      height: 44px;
-      width: auto;
+        height: 44px;
+        width: auto;
     }
 
     & button{
-      width: 102px;
-      height: 40px;
-      color: #F5F5F5;
-      background-color: #C92071;
-      border-radius: 5px;
-      padding: 10px 40px;
-      border: none;
-      border-radius: 8px;
-      font-size: 16px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-family: Inter;
-      transition: 200ms;
+        width: 102px;
+        height: 40px;
+        color: #F5F5F5;
+        background-color: #C92071;
+        border-radius: 5px;
+        padding: 10px 40px;
+        border: none;
+        border-radius: 8px;
+        font-size: 16px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: Inter;
+        transition: 200ms;
     }
 
     & button:hover{
-      cursor: pointer;
-      background-color: #8d0949;
-      transition: 200ms;
+        cursor: pointer;
+        background-color: #8d0949;
+        transition: 200ms;
     }
 
     & #cadastro{
-      color: #666666;
-      width: 180px;
-      display: flex;
-      align-items: center;
-      text-decoration: underline;
+        color: #666666;
+        width: 180px;
+        display: flex;
+        align-items: center;
+        text-decoration: underline;
     }
 
     & input{
-      background-color: #F5F5F5;
-      border: none;
-      outline: none;
-      width: 100%;
+        background-color: #F5F5F5;
+        border: none;
+        outline: none;
+        width: 100%;
 
       & i{
-        color: #CCCCCC;
+         color: #CCCCCC;
       }
     }
 
     & img#cart{
-      height: 20px;
-      width: auto;
+        height: 20px;
+        width: auto;
     }
 
     & img#cart:hover{
-      cursor: pointer;
+       cursor: pointer;
     }
   }
 
   & nav{
-    width: 100%;
-    padding-bottom: 20px;
+      width: 100%;
+      padding-bottom: 20px;
     & ul{
-      display: flex;
-      gap: 30px;
+        display: flex;
+        gap: 30px;
       
-      & li{
-        color: #666666;
+      & .nav-link{
+          color: #666666;
+          padding: 5px;
       }
-      & li:hover{
-        cursor: pointer;
-        color: #C92071;    
-        
+
+      & .active{
+          font-weight: 500;
+          color: #C92071;
+          border-bottom: 2px solid #C92071;
       }
+
+
     }
 
   }
