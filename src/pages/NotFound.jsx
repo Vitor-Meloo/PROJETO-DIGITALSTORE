@@ -10,7 +10,6 @@ const BodyComponent = styled.body`
     padding: 0;
 
     & div{
-        background-color: white;
         display: flex;
         flex-direction: column;
         align-items: center;
