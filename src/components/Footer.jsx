@@ -76,8 +76,6 @@ const FooterComponent = styled.footer`
         }
     }
 
-    
-
     & #copyright{
         font-size: 13px;
         color: #e0e0e0;
