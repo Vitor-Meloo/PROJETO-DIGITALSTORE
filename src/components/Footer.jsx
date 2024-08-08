@@ -20,7 +20,8 @@ const FooterComponent = styled.footer`
     & #container{
         display: flex;
         flex-wrap: wrap;
-        gap: 30px;
+        width: 95%;
+        justify-content: space-between;
         border-bottom: 1px solid gray;
 
         & h4{
@@ -51,7 +52,7 @@ const FooterComponent = styled.footer`
             display: flex;
             flex-direction: column;
             gap: 35px;
-            width: 600px;
+            width: 350px;
             align-items: start;
             padding: 0 60px 0 0;
 
@@ -93,7 +94,11 @@ export const Footer = () => {
 
                 <div id="conexoes">
                     <img id="imglogo" src={logofooter}></img>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates neque nihil nisi, expedita mollitia voluptate enim exercitationem ullam aperiam fuga atque sit dignissimos dicta, tempore, culpa nobis earum. Voluptas, asperiores!</p>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur
+                        adipiscing elit, sed do eiusmod tempor
+                        incididunt ut labore et dolore.
+                    </p>
 
                     <nav>
                         <ul>

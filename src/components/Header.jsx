@@ -57,6 +57,7 @@ const HeaderContainer = styled.header`
     & img#logo{
         height: 44px;
         width: auto;
+        margin-left: 5px;
     }
 
     & button{
@@ -64,9 +65,7 @@ const HeaderContainer = styled.header`
         height: 40px;
         color: #F5F5F5;
         background-color: #C92071;
-        border-radius: 5px;
         padding: 10px 40px;
-        border: none;
         border-radius: 8px;
         font-size: 16px;
         display: flex;
