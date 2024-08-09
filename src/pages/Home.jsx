@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import shoesHome from "../assets/images/shoeshome.png"
+import Ornament from "../assets/images/ornament.png"
 
 export const Home = () => {
     return ( 
@@ -17,14 +19,23 @@ export const Home = () => {
                     </p> 
 
                     <Link><button>Ver Ofertas</button></Link>
-              
+   
                 </div>  
 
-                <div id="images">
+                <div id="imagesdescription">
+                    <img id="shoeshome" src={shoesHome} alt="foto de tenis nike branco e vermelho"/> 
+                    <img id="ornament" src={Ornament}/>      
+                </div>     
+              
+                <div id="carrossel">
+                    <h1>Carrosel</h1>
 
-                    
-                    
-                </div>          
+
+
+
+                </div>
+
+                       
             
             
             </div> 
@@ -39,11 +50,14 @@ export const Home = () => {
 
 const HomePage = styled.main`
     
-    & #container {
-        
-        padding: 100px;
-
+    & #container { 
+       display: flex;
+       flex-wrap: wrap;
+       margin-left: 10%;
         & #description {
+            background-color: red;
+            flex-basis: 30%;
+            border-width:0px;
 
             & h4{
                 color: #da9a10;
@@ -63,7 +77,6 @@ const HomePage = styled.main`
                width: 495px;
             }
 
-            
             & button{
             width: 180px;
             height: 40px;
@@ -87,37 +100,19 @@ const HomePage = styled.main`
                 transition: 200ms;
             }
 
+        }
 
+        & #imagesdescription{
+            background-color: #44ca1f;
+            flex-basis: 60%;
+        }
 
-
-
-
-
-
+        & #carrossel{
+            background-color:yellow;
         }
 
 
-
-
-
-
-
-
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 `;
  
