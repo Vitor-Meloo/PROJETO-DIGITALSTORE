@@ -1,10 +1,15 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import whitesneakers from "../assets/images/whitesneakers.png";
+
+
+
 
 export const Home = () => {
     return ( 
         <HomePage>
-           <div id="container">
+
+           <div id="primarycontainer">
                 
                 <div id="description">
 
@@ -17,20 +22,15 @@ export const Home = () => {
                     </p> 
 
                     <Link><button>Ver Ofertas</button></Link>
+
               
                 </div>  
 
-                <div id="images">
-
-                    
-                    
-                </div>          
-            
+                <div id="ShoesOrnamentImages">
+                    <img id="WhiteSneakers" src={whitesneakers}/>   
+                </div>
             
             </div> 
-
-
-
 
 
         </HomePage>
@@ -39,12 +39,13 @@ export const Home = () => {
 
 const HomePage = styled.main`
     
-    & #container {
-        
-        padding: 100px;
+    & #primarycontainer {
+        display: flex;
+        padding-left:150px;
+        padding-top: 140px;
 
         & #description {
-
+            
             & h4{
                 color: #da9a10;
             }
@@ -88,20 +89,13 @@ const HomePage = styled.main`
                 transition: 200ms;
             }
 
+        }
 
-
-
-
+        & #ShoesOrnamentImages{
 
 
 
         }
-
-
-
-
-
-
 
 
     }
