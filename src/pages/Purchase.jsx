@@ -1,38 +1,137 @@
-import { useParams } from "react-router-dom"
+import React from "react"
+import { useNavigate, useParams } from "react-router-dom"
 import styled from "styled-components"
+import Confirm from "./Confirm"
 
 const PurchasePage = styled.main`
         padding: 100px;
 
         & #container{
             display: flex;
+            width: auto;
+            justify-content: center;
+            gap: 20px;
+            
 
             & figure{
                 background-color: white;
-                width: 450px;
-                height: 300px;
+                width: 350px;
+                height: 250px;
                 display: flex;
                 justify-content: center;
                 align-items: center;
                 border-radius: 10px;
 
                 & img{
-                    width: 400px;
+                    width: 300px;
                     height: auto;
                 }
             }
 
-            & #productDesc{
+            & #productDetails{
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
                 
+
+                & #productDesc{
+                    & h1{
+                        font-size: 34px;
+                        font-family: Inter;
+                        font-weight: 700;
+                        letter-spacing: 0.75px;
+                    }
+
+                    & h5{
+                        font-size: 16px;
+                        font-family: Inter;
+                        font-weight: 600;
+                        letter-spacing: 0.75px;
+                        color: #8F8F8F;
+                    }
+
+                    & h2{
+                        font-size: 26px;
+                        font-family: Inter;
+                        font-weight: 700;
+                        letter-spacing: 0.75px;
+                    }
+                }
+
+                & h5{
+                    font-size: 16px;
+                    font-family: Inter;
+                    font-weight: 600;
+                    letter-spacing: 0.75px;
+                    color: #8F8F8F;
+                }
+                
+                & div#footSize{
+                    display: flex;
+                    justify-content: start;
+                    gap: 10px;
+ 
+
+                    & div.size{
+                        font-family: Inter;
+                        font-weight: 600;
+                        letter-spacing: 0.75px;
+
+                        height: 35px;
+                        width: 35px;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        border: 1px black solid;
+                        border-radius: 8px;
+                    }
+
+                    & div.size:hover{
+                        cursor: pointer;
+                        background-color: #cacaca;
+                    }
+                }
+
+                & button{
+                    font-size: 26px;
+                    font-family: Inter;
+                    font-weight: 700;
+                    letter-spacing: 0.75px;
+
+                    background-color: #ffaf03;
+                    height: 50px;
+                    width: 260px;
+                    border-radius: 10px;
+                }
+
+                & button:hover{
+                    background-color: #da9a10
+                }
             }
+
         }
     
 `
 const Purchase = () =>{
     const {nome, preco, image} = useParams();
+    const renderedImage = `${window.location.origin}/src/assets/images/${image}`;
+    const navigate = useNavigate();
 
-    const renderedImage = `${window.location.origin}/src/assets/images/${image}`
+    var size = null;
+    function getSize(e){
+        size = e.currentTarget.querySelector("p").textContent
+    }
 
+    function comprar(){
+        if(!size){
+            window.alert("voce precisa definir o tamnaho")
+        }else{
+            navigate(`/products/purchase/confirm/${size}`)
+            console.log(size)
+            console.log("a funcao foi chamada")
+        }
+    }
+    
     return(
         <PurchasePage>
             <div id="container">
@@ -40,10 +139,28 @@ const Purchase = () =>{
                     <img src={renderedImage} alt="Imagem do produto" />
                 </figure>
 
-                <div id="productDesc">
-                    <h1>{nome}</h1>
-                    <h2>{preco}</h2>
+                <div id="productDetails">
+
+                    <div id="productDesc">
+                        <h1>Nike - {nome}</h1>
+                        <h5>Tênis | Casual | Nike | Adulto | Masculino</h5>
+                        <h2>{preco}</h2> 
+                    </div>
+                    
+
+                    <h5>Tamanho</h5>
+                    <div id="footSize">
+                        <div className="size" onClick={getSize}><p>38</p></div>
+                        <div className="size" onClick={getSize}><p>39</p></div>
+                        <div className="size" onClick={getSize}><p>40</p></div>
+                        <div className="size" onClick={getSize}><p>41</p></div>
+                        <div className="size" onClick={getSize}><p>42</p></div>
+                        <div className="size" onClick={getSize}><p>43</p></div>
+                    </div>
+                    <button onClick={comprar}>Comprar</button>
                 </div>
+
+                
                 
                 
             </div>

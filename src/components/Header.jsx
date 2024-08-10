@@ -3,15 +3,18 @@ import styled from "styled-components";
 import logo from "..//assets/images/logo.png";
 import 'primeicons/primeicons.css';
 import iconCart from "../assets/icons/mini-cart.png"
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 
 export const Header = () => {
-  
+  const navigate = useNavigate()
+  function click(){
+    navigate("/")
+  }
   
   return (
     <HeaderContainer>
       <div>
-        <img id="logo" src={logo} alt="Logo Digital Store" />
+        <img onClick={click} id="logo" src={logo} alt="Logo Digital Store" />
 
         <SearchContainer>
         <input type="text" placeholder="Pesquisar produto..." />

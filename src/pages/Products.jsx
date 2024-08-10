@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import tenis from "../assets/images/K-SwissV8-Masculino.png"
+import tenis from "../assets/images/K-SwissV8.png"
 import { useNavigate } from "react-router-dom";
 
 const ProductsPage = styled.main`
@@ -115,7 +115,7 @@ const Products = () =>{
                         
                         <div id="productDesc">
                             <h6 className="productType">Tênis</h6>
-                            <h4>K-Swiss V8 - Masculino</h4>
+                            <h4>K-Swiss V8</h4>
                             <p className="preco">R$ 199,99</p>
                         </div>
                     </div>
@@ -127,7 +127,7 @@ const Products = () =>{
                         
                         <div id="productDesc">
                             <h6 className="productType">Tênis</h6>
-                            <h4>K-Swiss V8 - Masculino</h4>
+                            <h4>K-Swiss V8</h4>
                             <p className="preco">R$ 199,99</p>
                         </div>
 
@@ -140,7 +140,7 @@ const Products = () =>{
 
                         <div id="productDesc">
                             <h6 className="productType">Tênis</h6>
-                            <h4>K-Swiss V8 - Masculino</h4>
+                            <h4>K-Swiss V8</h4>
                             <p className="preco">R$ 199,99</p>
                         </div>
 
@@ -153,7 +153,7 @@ const Products = () =>{
                         
                         <div id="productDesc">
                             <h6 className="productType">Tênis</h6>
-                            <h4>K-Swiss V8 - Masculino</h4>
+                            <h4>K-Swiss V8</h4>
                             <p className="preco">R$ 199,99</p>
                         </div>
                         

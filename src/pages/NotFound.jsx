@@ -1,13 +1,8 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-const BodyComponent = styled.body`
-    height: 50vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0;
-    padding: 0;
+const NotFoundPage = styled.main`
+    padding: 100px;
 
     & div{
         display: flex;
@@ -45,13 +40,13 @@ const BodyComponent = styled.body`
 `
 const NotFound = () =>{
     return(
-        <BodyComponent>
+        <NotFoundPage>
             <div>
                 <h1>Erro 404</h1>
                 <p>A página que esta procurando é inexistente!</p>
                 <Link id= "link" to={"/"}><button>voltar</button></Link>
             </div>
-        </BodyComponent>
+        </NotFoundPage>
     )
 }
 
