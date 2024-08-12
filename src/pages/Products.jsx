@@ -106,6 +106,7 @@ const Products = () =>{
             <div id="container">
 
                 <h2>Produtos Relacionados</h2>
+                
                 <div id="products">
 
                     <div className="card" onClick={click}>
