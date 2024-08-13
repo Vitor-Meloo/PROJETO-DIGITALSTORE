@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import tenis from "../assets/images/K-SwissV8.png"
+import tenis from "../assets/images/K-SwissV8-Masculino.png"
 import { useNavigate } from "react-router-dom";
 
 const ProductsPage = styled.main`
@@ -95,10 +95,6 @@ const Products = () =>{
         const preco = e.currentTarget.querySelector("p");
 
         navigate(`/products/purchase/${nome.textContent}/${preco.textContent}/${nomeImage}`)
-
-        console.log(nomeImage)
-        console.log(nome)
-        console.log(preco)
     }
 
     return(
@@ -117,7 +113,7 @@ const Products = () =>{
                         <div id="productDesc">
                             <h6 className="productType">Tênis</h6>
                             <h4>K-Swiss V8</h4>
-                            <p className="preco">R$ 199,99</p>
+                            <p className="preco">R$199,99</p>
                         </div>
                     </div>
 
@@ -129,7 +125,7 @@ const Products = () =>{
                         <div id="productDesc">
                             <h6 className="productType">Tênis</h6>
                             <h4>K-Swiss V8</h4>
-                            <p className="preco">R$ 199,99</p>
+                            <p className="preco">R$199,99</p>
                         </div>
 
                     </div>
@@ -142,7 +138,7 @@ const Products = () =>{
                         <div id="productDesc">
                             <h6 className="productType">Tênis</h6>
                             <h4>K-Swiss V8</h4>
-                            <p className="preco">R$ 199,99</p>
+                            <p className="preco">R$199,99</p>
                         </div>
 
                     </div>
@@ -155,7 +151,7 @@ const Products = () =>{
                         <div id="productDesc">
                             <h6 className="productType">Tênis</h6>
                             <h4>K-Swiss V8</h4>
-                            <p className="preco">R$ 199,99</p>
+                            <p className="preco">R$199,99</p>
                         </div>
                         
                     </div>

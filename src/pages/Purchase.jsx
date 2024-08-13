@@ -1,7 +1,6 @@
 import React from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import styled from "styled-components"
-import Confirm from "./Confirm"
 
 const PurchasePage = styled.main`
         padding: 100px;
@@ -98,10 +97,11 @@ const PurchasePage = styled.main`
                     font-weight: 700;
                     letter-spacing: 0.75px;
 
-                    background-color: #ffaf03;
                     height: 50px;
                     width: 260px;
                     border-radius: 10px;
+                    color: white;
+                    background-color: #ffaf03;
                 }
 
                 & button:hover{
@@ -113,7 +113,7 @@ const PurchasePage = styled.main`
     
 `
 const Purchase = () =>{
-    const {nome, preco, image} = useParams();
+    const {name, price, image} = useParams();
     const renderedImage = `${window.location.origin}/src/assets/images/${image}`;
     const navigate = useNavigate();
 
@@ -124,11 +124,9 @@ const Purchase = () =>{
 
     function comprar(){
         if(!size){
-            window.alert("voce precisa definir o tamnaho")
+            window.alert("Você precisa escolher o tamanho")
         }else{
-            navigate(`/products/purchase/confirm/${size}`)
-            console.log(size)
-            console.log("a funcao foi chamada")
+            navigate(`/products/purchase/confirm/${name}/${price}/${image}`)
         }
     }
     
@@ -142,9 +140,9 @@ const Purchase = () =>{
                 <div id="productDetails">
 
                     <div id="productDesc">
-                        <h1>Nike - {nome}</h1>
+                        <h1>Nike - {name}</h1>
                         <h5>Tênis | Casual | Nike | Adulto | Masculino</h5>
-                        <h2>{preco}</h2> 
+                        <h2>{price}</h2> 
                     </div>
                     
 

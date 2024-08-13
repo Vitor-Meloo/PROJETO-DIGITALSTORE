@@ -1,15 +1,23 @@
 import styled from "styled-components";
-import { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import {useForm } from "react-hook-form";
+import { useRef } from "react";
 
 const ConfirmPage = styled.main`
-    padding: 100px;
+    padding: 30px;
+    display: flex;
+    justify-content: center;
 
     & div#container{
         display: flex;
         gap: 25px;
 
         & div#compra{
+
+            & label{
+                margin-top: 15px;
+                margin-bottom: 3px;
+            }
 
             & h1{
                 font-size: 32px;
@@ -73,6 +81,10 @@ const ConfirmPage = styled.main`
                             width: 15px;
                             
                         }
+
+                        & label{
+                            margin:0;
+                        }
                     }
 
                     & #cardData{
@@ -87,13 +99,24 @@ const ConfirmPage = styled.main`
                 }
                 & #finalizePurchase{
 
+                        & p{
+                            display: flex;
+                            justify-content: end;
+                            font-size: 12px;
+                            letter-spacing: 1px;
+                            font-weight: 500;
+                            color: #8F8F8F;
+                            margin-bottom: 10px;
+
+                        }
+
                         & #total{
                             padding: 0;
-                            height: 70px;
+                            height: 40px;
                             display: flex;
                             flex-direction: row;
                             justify-content: space-between;
-                            align-items: center;
+                            align-items: end;
                             
                             font-size: 18px;
                             font-family: Inter;
@@ -102,14 +125,20 @@ const ConfirmPage = styled.main`
 
                             & p{
                                 color: #EE4266;
+                                font-size: 18px;
+                                font-weight: 700;
+                                margin: 0;
                             }
                             
                         }
+
                         & button{
-                            background-color: #ffaf03;
                             height: 50px;
                             width: auto;
                             border-radius: 10px;
+
+                            background-color: #ffaf03;
+                            color: white;
                         }
 
                         & button:hover{
@@ -123,7 +152,7 @@ const ConfirmPage = styled.main`
         }
 
         & div#resumo{
-            height: 367px;
+            height: 439px;
             width: 400px;
             margin-top: 48px;
             border-radius: 10px;
@@ -131,25 +160,118 @@ const ConfirmPage = styled.main`
             background-color: white;
 
             & h2{
-                    font-size: 20px;
-                    font-family: Inter;
-                    margin-bottom: 10px;
-                    padding-bottom: 10px;
-                    border-bottom: 1px #b8b8b8 solid;
+                font-size: 24px;
+                font-family: Inter;
+                margin-bottom: 10px;
+                padding-bottom: 6px;
+                border-bottom: 1px #b8b8b8 solid;
             }
+
+            & #product{
+                display: flex;
+                align-items: center;
+                padding-bottom: 10px;
+                border-bottom: 1px #b8b8b8 solid;
+
+                & img{
+                    width: 100px;
+                    margin-right: 30px;
+                } 
+                
+                & h1{
+                    font-weight: 500;  
+                }
+            }
+
+            & label{
+                display: flex;
+                justify-content: space-between;
+                margin-top: 10px;
+                
+                font-weight: 500;
+                letter-spacing: 0.25px;
+                color: #808080;
+
+                & p{
+                    color: black;
+                }
+            }
+
+            & #finalize{
+                height: auto;
+                width: auto;
+                margin-top: 15px;
+                padding: 20px;
+                border-radius: 5px;
+                border: 1px solid #ffd884;
+                background-color: #fff0d0;
+
+                & p{ 
+                    display: flex;
+                    justify-content: end;
+                    
+                    font-size: 12px;
+                    letter-spacing: 1px;
+                    font-weight: 500;
+                    color: #8F8F8F;
+                }
+
+                & h1{
+                    display: flex;
+                    justify-content: space-between;
+                    
+                    font-size: 24px;
+                    font-weight: 700;
+
+                    & p{
+                        font-size: 24px;
+                        font-weight: 700;
+                        letter-spacing: 1px;
+                        color: black;
+                        
+                    }
+                }
+
+                
+
+            }
+            & button{
+                margin-top: 10px;
+                height: 50px;
+                width: 100%;
+                border-radius: 10px;
+                
+                background-color: #ffaf03;
+                color: white;
+            }
+
+            & button:hover{
+                background-color: #da9a10
+            }
+
         }
     }
     
 `
 
 const Confirm = () =>{
-    const [paymentMethod, setPaymentMethod] = useState("");
+    const {name, price, image} = useParams();
+    const img = `${window.location.origin}/src/assets/images/${image}`
+
+    const Price = Number(price.replace("R$", "").trim().replace(",","."));
+    const finalPrice = (Price/10).toFixed(2)
+    const formattedPrice = (finalPrice.toString()).replace(".",",")
+
+    const {register, handleSubmit, watch} = useForm();
+    const paymentMethod = watch("paymentMethod")
     
 
-    const click = (e)=>{
-        console.log(e.target.value)
-        setPaymentMethod(e.target.value)
+    function buy(dados) {
+        alert("comprou")
+        console.log(dados)
+        
     }
+
 
     return(
         <ConfirmPage>
@@ -157,40 +279,40 @@ const Confirm = () =>{
 
                 <div id="compra">
                     <h1>Finalizar compra</h1>
-                    <form>
+                    <form onSubmit={handleSubmit(buy)}>
                         <div id="personalInfo">
                             <h2>Informações Pessoais</h2>
                             
                             <label htmlFor="name">Nome completo *</label>
-                            <input type="text" id="name" placeholder="Insira seu nome"/>
+                            <input type="text" id="name" placeholder="Insira seu nome" {...register("name", {required: true})}/>
 
                             <label htmlFor="cpf">CPF *</label>
-                            <input type="text" id="cpf" placeholder="Insira seu CPF"/>
+                            <input type="text" id="cpf" placeholder="Insira seu CPF" {...register("cpf", {required: true})}/>
 
                             <label htmlFor="email">E-mail *</label>
-                            <input type="email" id="email" placeholder="Insira seu email"/>
+                            <input type="email" id="email" placeholder="Insira seu email" {...register("email", {required: true})}/>
 
                             <label htmlFor="phone">Celular *</label>
-                            <input type="text" id="phone" placeholder="Insira seu número"/>
+                            <input type="text" id="phone" placeholder="Insira seu número" {...register("phone", {required: true})}/>
                         </div>
 
                         <div id="deliveryInfo">
                             <h2>Informações de Entrga</h2>
 
-                            <label htmlFor="address">Endereço *</label>
-                            <input type="text" id="address" placeholder="Insira seu endereço"/>
+                            <label htmlFor="address" >Endereço *</label>
+                            <input type="text" id="address" placeholder="Insira seu endereço" {...register("address", {required: true})}/>
 
                             <label htmlFor="district">Bairro *</label>
-                            <input type="text" id="district" placeholder="Insira o nome do seu bairro"/>
+                            <input type="text" id="district" placeholder="Insira o nome do seu bairro" {...register("district", {required: true})}/>
 
                             <label htmlFor="city">Cidade *</label>
-                            <input type="text" id="city" placeholder="Insira o nome da sua cidade"/>
+                            <input type="text" id="city" placeholder="Insira o nome da sua cidade" {...register("city", {required: true})}/>
 
                             <label htmlFor="cep">CEP*</label>
-                            <input type="text" id="cep" placeholder="Insira o CEP da sua cidade"/>
+                            <input type="text" id="cep" placeholder="Insira o CEP da sua cidade" {...register("cep", {required: true})}/>
 
                             <label htmlFor="complement">Complemento</label>
-                            <input type="text" id="complement" placeholder="Insira um complemento (opcional)"/>
+                            <input type="text" id="complement" placeholder="Insira um complemento (opcional)" {...register("complement")}/>
 
                         </div>
 
@@ -203,19 +325,15 @@ const Confirm = () =>{
 
                                 <input type="radio"
                                         id="credit"
-                                        name="payment" 
                                         value="credit"
-                                        checked={paymentMethod === "credit"}
-                                        onChange={click}
+                                        {...register("paymentMethod", {required: true})}
                                 />
                                 <label htmlFor="credit">Cartão de Crédito</label>
 
                                 <input type="radio" 
                                         id="ticket" 
-                                        name="payment" 
                                         value="ticket"
-                                        checked={paymentMethod === "ticket"}
-                                        onChange={click}
+                                        {...register("paymentMethod", {required: true})}
                                 />
                                 <label htmlFor="ticket">Boleto bancário</label>
                             </div>
@@ -240,24 +358,39 @@ const Confirm = () =>{
                             
                         </div>
 
-                        {(paymentMethod) && (
+                            {paymentMethod && (
                                 <div id="finalizePurchase">
                                     <h2>Finalizar compra</h2>
                                     <div id="total">
                                         <label htmlFor="total">Total</label>
-                                        <p>valor</p>
+                                        <p>{price}</p>
                                     </div>
-                                    <button>Realizar pagamento</button>
+                                    <p>ou de 10x de R${formattedPrice}</p>
+                                    <button type="submit" >Realizar pagamento</button>
                                 </div>
-                            )
-                        }
-                        
-                       
+
+                            )}
+
                     </form>
                 </div>
 
                 <div id="resumo">
                     <h2>Resumo</h2>
+                    <div id="product">
+                        <img src={img} alt="imagem do produto" />
+                        <h1>Tênis Nike {name}</h1>
+                    </div>
+
+                    <label htmlFor="subTotal">Subtotal: <p>{price}</p></label>
+                    <label htmlFor="freight">Frete: <p>R$0,00</p></label>
+                    <label htmlFor="discount">Desconto <p>R$0,00</p></label>
+
+                    <div id="finalize">
+                        <h1>Total <p>{price}</p></h1>
+                        <p>ou de 10x de R${formattedPrice}</p>
+                    </div>
+                    
+                    
                 </div>
   
             </div>
